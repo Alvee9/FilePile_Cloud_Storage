@@ -6,7 +6,19 @@
 </head>
 <body>
 
+    <h1> User Login</h1><br>
 
+
+    <form action="/authenticate/" method="post">{% csrf_token %}
+      <fieldset>
+        <legend>Login information:</legend>
+        E-mail:<br>
+        <input type="text" name="email" ><br>
+        Password:<br>
+        <input type="password" name="password"><br><br>
+        <input type="submit" value="Submit">
+      </fieldset>
+    </form>
 
 </body>
 </html>
