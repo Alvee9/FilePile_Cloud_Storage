@@ -11,13 +11,14 @@
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"> -->
     <title>File Pile - Cloud Storage</title>
-
-    <link href="css/lib/chartist/chartist.min.css" rel="stylesheet">
-	  <link href="css/lib/owl.carousel.min.css" rel="stylesheet" />
-    <link href="css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+
+    <link href="css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
+    <link href="css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
+    <link href="css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -132,47 +133,48 @@
       </div>
       <!-- End header header -->
 
-      <!-- Left Sidebar  -->
-      <div class="left-sidebar">
-          <!-- Sidebar scroll-->
-          <div class="scroll-sidebar">
-              <!-- Sidebar navigation-->
-              <nav class="sidebar-nav">
-                  <ul id="sidebarnav">
-                      <li class="nav-devider"></li>
+        <!-- Left Sidebar  -->
+        <div class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-devider"></li>
 
-                      <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Home</span></a>
-                          <ul aria-expanded="false" class="collapse">
-                              <li><a href="index.html">Files</a></li>
-                              <li><a href="index1.html">Shared Files</a></li>
-                          </ul>
-                      </li>
+                        <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Home</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="index.html">Files</a></li>
+                                <li><a href="index1.html">Shared Files</a></li>
+                            </ul>
+                        </li>
 
-                      <li> <a href="app-profile.html" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Profile</span></a></li>
+                        <li> <a href="app-profile.html" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Profile</span></a></li>
 
-                      <li> <a class="" href="layout-blank.html" aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu">About us</span></a></li>
-                  </ul>
-              </nav>
-              <!-- End Sidebar navigation -->
-          </div>
-          <!-- End Sidebar scroll-->
-      </div>
-      <!-- End Left Sidebar  -->
+                        <li> <a class="" href="layout-blank.html" aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu">About us</span></a></li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </div>
+        <!-- End Left Sidebar  -->
 
         <!-- Page wrapper  -->
         <div class="page-wrapper">
-          <!-- Bread crumb -->
-          <div class="row page-titles">
-              <div class="col-md-5 align-self-center">
-                  <h3 class="text-primary">Files</h3> </div>
-              <!-- <div class="col-md-7 align-self-center">
-                  <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                      <li class="breadcrumb-item active">Files</li>
-                  </ol>
-              </div> -->
-          </div>
-          <!-- End Bread crumb -->
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Files</h3> </div>
+                <!-- <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Files</li>
+                    </ol>
+                </div> -->
+            </div>
+            <!-- End Bread crumb -->
+
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <!-- Start Page Content -->
@@ -231,6 +233,16 @@
                     </div>
                 </div>
 
+                <!-- Alear for upload download delete -->
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Uploaded successfully! And the new file has been added to your file list!
+                    </div>
+                  </div>
+                </div>
+
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="alert alert-warning alert-dismissible fade show">
@@ -241,14 +253,31 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-3">
+                  <div class="col-lg-12">
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Delete the file successfully!
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="button-list">
                       <div class="btn-group">
+
+                        <div class="upload-btn-wrapper">
+                          <button class="btn-upload">Upload File</button>
+                          <input type="file" name="upload-file" accept="image/*" />
+                        </div>
+
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Sort<span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu">
                           <li><a href="#">Sort by Name</a></li>
                           <li><a href="#">Sort by Date</a></li>
                         </ul>
                       </div>
+                    </div>
                   </div>
                 </div>
 
@@ -256,7 +285,7 @@
                   <div class="col-lg-12">
                       <div class="card">
                           <div class="card-title">
-                              <h4>Shared files with you</h4>
+                              <h4>Your Files</h4>
                           </div>
                           <div class="card-body">
                               <div class="table-responsive">
@@ -265,36 +294,40 @@
                                           <tr>
                                               <th>#</th>
                                               <th>Name</th>
-                                              <th>Owner</th>
                                               <th>Size</th>
                                               <th>Upload Date</th>
                                               <th>Download</th>
+                                              <th>Delete</th>
+                                              <th>Share</th>
                                           </tr>
                                       </thead>
                                       <tbody>
                                           <tr>
                                               <th scope="row">1</th>
                                               <td>Kolor Tea Shirt For Man</td>
-                                              <td>Sujit</td>
                                               <td>22 MB</td>
                                               <td>January 22</td>
-                                              <td><button class="btn btn-success btn sweet-success">Download</button></td>
+                                              <td><button class="btn btn-success btn sweet-success" onclick="download_alert();">Download</button></td>
+                                              <td><button type="button" class="btn btn-danger m-b-10 m-l-5" onclick="delete_alert();">Delete </button></td>
+                                              <td><button type="button" class="btn btn-info m-b-10 m-l-5" onclick="share_alert();">Share</button></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">2</th>
                                             <td>Kolor Tea Shirt For Man</td>
-                                            <td>Azwad</td>
                                             <td>22 MB</td>
                                             <td>January 22</td>
-                                            <td><button class="btn btn-success btn sweet-success">Download</button></td>
+                                            <td><button class="btn btn-success btn sweet-success"onclick="download_alert();">Download</button></td>
+                                            <td><button type="button" class="btn btn-danger m-b-10 m-l-5" onclick="delete_alert();">Delete</button></td>
+                                            <td><button type="button" class="btn btn-info m-b-10 m-l-5"onclick="share_alert();">Share</button></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">3</th>
                                             <td>Kolor Tea Shirt For Man</td>
-                                            <td>Joydip</td>
                                             <td>22 MB</td>
                                             <td>January 22</td>
-                                            <td><button class="btn btn-success btn sweet-success">Download</button></td>
+                                            <td><button class="btn btn-success btn sweet-success" onclick="download_alert();" >Download</button></td>
+                                            <td><button type="button" class="btn btn-danger m-b-10 m-l-5" onclick="delete_alert();">Delete</button></td>
+                                            <td><button type="button" class="btn btn-info m-b-10 m-l-5" onclick="share_alert();">Share</button></td>
                                           </tr>
                                       </tbody>
                                   </table>
@@ -311,6 +344,28 @@
             <footer class="footer"> © 2018 All rights reserved.</footer>
             <!-- End footer -->
         </div>
+        <script type="text/javascript">
+          function delete_alert()
+          {
+            swal("Are you sure you want to do this?", {
+            buttons: ["NO", "YES"],
+			});
+          }
+          function download_alert()
+          {
+            swal("Download","","success")
+          }
+          function share_alert()
+          {
+            swal("Email", {
+           content: "input",
+		   })
+			.then((value) => {
+			  if(!value) throw null
+			  swal(`Shared`);
+			});
+          }
+        </script>
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
@@ -325,25 +380,36 @@
     <script src="js/sidebarmenu.js"></script>
     <!--stickey kit -->
     <script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+
+    <!-- alert -->
+    <script src="js/lib/sweetalert/sweetalert.min.js"></script>
+    <!-- scripit init-->
+    <script src="js/lib/sweetalert/sweetalert.init.js"></script>
+
+    <!-- Amchart -->
+     <script src="js/lib/morris-chart/raphael-min.js"></script>
+    <script src="js/lib/morris-chart/morris.js"></script>
+    <script src="js/lib/morris-chart/dashboard1-init.js"></script>
 
 
-    <script src="js/lib/datamap/d3.min.js"></script>
-    <script src="js/lib/datamap/topojson.js"></script>
-    <script src="js/lib/datamap/datamaps.world.min.js"></script>
-    <script src="js/lib/datamap/datamap-init.js"></script>
+	<script src="js/lib/calendar-2/moment.latest.min.js"></script>
+    <!-- scripit init-->
+    <script src="js/lib/calendar-2/semantic.ui.min.js"></script>
+    <!-- scripit init-->
+    <script src="js/lib/calendar-2/prism.min.js"></script>
+    <!-- scripit init-->
+    <script src="js/lib/calendar-2/pignose.calendar.min.js"></script>
+    <!-- scripit init-->
+    <script src="js/lib/calendar-2/pignose.init.js"></script>
 
-    <script src="js/lib/weather/jquery.simpleWeather.min.js"></script>
-    <script src="js/lib/weather/weather-init.js"></script>
     <script src="js/lib/owl-carousel/owl.carousel.min.js"></script>
     <script src="js/lib/owl-carousel/owl.carousel-init.js"></script>
+    <script src="js/scripts.js"></script>
+    <!-- scripit init-->
 
-
-    <script src="js/lib/chartist/chartist.min.js"></script>
-    <script src="js/lib/chartist/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/lib/chartist/chartist-init.js"></script>
-    <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
