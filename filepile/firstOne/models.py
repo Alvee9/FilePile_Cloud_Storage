@@ -53,7 +53,7 @@ class Register:
         rows = cursor.fetchall()
         tmp1 = 0
         if int(rows[0][0]) > 0:
-            cursor.execute("SELECT MAX(DIRECTORYID) FROM TABLE DIRECTORIES")
+            cursor.execute("SELECT MAX(DIRECTORYID) FROM DIRECTORIES")
             rows = cursor.fetchall()
             tmp1 = rows[0][0]
 
