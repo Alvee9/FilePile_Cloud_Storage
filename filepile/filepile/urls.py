@@ -23,5 +23,10 @@ urlpatterns = [
     path('login/', view.login),
     path('logout/', view.logout),
     path('folder/', view.folder),
-    path('upload/', view.upload)
+    path('upload/', view.upload),
+    path('signup/', view.signup),
+    path('register/', view.register),
+
+
+
 ]

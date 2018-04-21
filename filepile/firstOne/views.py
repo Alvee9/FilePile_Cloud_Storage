@@ -1,5 +1,6 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
-
+from .models import ValidateUser
+from .models import Register
 # Create your views here.
 
 
@@ -12,10 +13,26 @@ def login(request):
 
 
 def logout(request):
-    return render(request, 'index.html', {})
+    request.session['user'] = -1
+    return render(request, 'login.html', {})
+
+
+def signup(request):
+    request.session['user'] = -1
+    return render(request, 'signup.html', {})
+
+
+def register(request):
+    params = request.POST
+    r = Register()
+    r.register(params['email'], params['name'], params['password'])
+    return render(request, 'login.html', {})
 
 
 def folder(request):
+    if 'user' not in request.session or request.session['user'] == -1:
+        request.session['user'] = -1
+        return render(request, 'login.html', {})
     return render(request, 'folder.html', {})
 
 
@@ -32,7 +49,7 @@ def authenticate(request):
     if check != -1:
         request.session['user'] = check
         tmp1['session_user'] = check
-        return render(request, 'landing.html', {'tmp1': tmp1})
+        return render(request, 'index.html', {'tmp1': tmp1})
     else:
         request.session['user'] = -1
-        return render(request, 'landing.html', {'tmp1': tmp1})
+        return render(request, 'login.html', {'tmp1': tmp1})
