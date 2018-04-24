@@ -1,14 +1,20 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
 from .models import ValidateUser
 from .models import Register
+from .models import CloudStorageOperations
+
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'index.html', {})
+    if 'user' not in request.session or request.session['user'] == -1:
+        request.session['user'] = -1
+        return render(request, 'login.html', {})
+    return folder(request)
 
 
 def login(request):
+    request.session['user'] = -1
     return render(request, 'login.html', {})
 
 
@@ -33,11 +39,10 @@ def folder(request):
     if 'user' not in request.session or request.session['user'] == -1:
         request.session['user'] = -1
         return render(request, 'login.html', {})
-    return render(request, 'folder.html', {})
 
-
-def upload(request):
-    return render(request, 'folder.html', {})
+    cso = CloudStorageOperations.getInstance(userID=int(request.session['user']))
+    fileList = cso.viewFiles()
+    return render(request, 'folder.html', {'fileList': fileList, 'user': request.session['user'], 'folderID': cso.currentFolder})
 
 
 def authenticate(request):
@@ -48,8 +53,30 @@ def authenticate(request):
 
     if check != -1:
         request.session['user'] = check
-        tmp1['session_user'] = check
-        return render(request, 'index.html', {'tmp1': tmp1})
+        cso = CloudStorageOperations.getInstance(int(request.session['user']))
+        return folder(request)
     else:
         request.session['user'] = -1
-        return render(request, 'login.html', {'tmp1': tmp1})
+        return render(request, 'login.html', {})
+
+
+def fileUpload(request):
+    params = request.POST
+    if 'user' not in request.session or request.session['user'] == -1:
+        request.session['user'] = -1
+        return render(request, 'login.html', {})
+
+    cso = CloudStorageOperations.getInstance(userID=int(request.session['user']))
+    cso.uploadFile(request)
+    return folder(request)
+
+
+def fileDownload(request, slug):
+    cso = CloudStorageOperations.getInstance(userID=int(request.session['user']))
+    return cso.downloadFile(slug)
+
+
+def fileDelete(request, slug):
+    cso = CloudStorageOperations.getInstance(userID=int(request.session['user']))
+    cso.deleteFile(slug)
+    return folder(request)

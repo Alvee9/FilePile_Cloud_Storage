@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from firstOne import views as view
+from django.urls import include, re_path
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,10 +25,11 @@ urlpatterns = [
     path('login/', view.login),
     path('logout/', view.logout),
     path('folder/', view.folder),
-    path('upload/', view.upload),
     path('signup/', view.signup),
     path('register/', view.register),
-
-
+    path('authenticate/', view.authenticate),
+    path('file_upload/', view.fileUpload),
+    re_path(r'^file_download/(.*)$',view.fileDownload),
+    re_path(r'^file_delete/(.*)$',view.fileDelete),
 
 ]

@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <title>Folder</title>
 
-
-
 </head>
 <body>
 
+<br>
+userid =  {{ user }}
+<br>
+current folder = {{ folderID }}
+<br>
+
+ &nbsp;&nbsp;<a href="/logout/">Logout</a>
+
+<br>
+<br>
+
+<form action="/file_upload/" method="post" enctype="multipart/form-data">{% csrf_token %}
+    Select file to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload File" name="submit">
+</form>
+
+<br>
+<br>
+<h1> List of Files</h1>
+<ul>
+{% for file in fileList %}
+
+    <li> {{file.2}}  &nbsp; &nbsp; <a href="/file_download/{{file.2}}"> download    </a>  &nbsp; &nbsp; <a href="/file_delete/{{file.2}}"> delete    </a> </li>
+
+{% endfor %}
+</ul>
 </body>
 </html>
