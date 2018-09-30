@@ -1,0 +1,5 @@
+
+.idea/
+filepile/filepile/__pycache__/
+filepile/db.sqlite3
+filepile/filepile/__pycache__/__init__.cpython-36.pyc
